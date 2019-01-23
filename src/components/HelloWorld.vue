@@ -1,12 +1,11 @@
 <template>
   <v-container grid-list-xl text-xs-center>
     <v-layout wrap row>
-      <v-flex xs8 offset-xs2>
+      <v-flex xs8 offset-xs2 v-for="item in itemList" :key="item.index">
         <v-card hover dark>
           <v-card-title primary-title>
             <div>
-              <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
-              <div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
+              <div>{{item}}</div>
             </div>
           </v-card-title>
         </v-card>
@@ -21,7 +20,8 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class HelloWorld extends Vue {
-  // @Prop() private msg!: string;
+  @Prop() private msg!: string;
+  private itemList: string[] = ['item1', 'item2', 'item3'];
 }
 </script>
 
