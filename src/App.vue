@@ -1,25 +1,27 @@
 <template>
   <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-    </v-toolbar>
+    <Navigation />
+    <Toolbar />
     <v-content>
-      <HelloWorld/>
+      <v-container fluid>
+        <!-- <router-view></router-view> -->
+      </v-container>
     </v-content>
+    <!-- <v-footer app></v-footer> -->
   </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from './components/HelloWorld.vue';
+import Navigation from './components/Navigation.vue';
+import Toolbar from './components/Toolbar.vue';
 
 @Component({
   components: {
     HelloWorld,
+    Navigation,
+    Toolbar,
   },
 })
 export default class App extends Vue {}
