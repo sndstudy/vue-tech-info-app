@@ -1,6 +1,6 @@
 <template>
-  <v-app>
     <v-toolbar app color="teal lighten-3">
+      <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
       <v-toolbar-title>Title</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
@@ -9,15 +9,15 @@
         <v-btn flat>Link Three</v-btn>
       </v-toolbar-items>
     </v-toolbar>
-  </v-app>
 </template>
 
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator';
 
 @Component
 export default class Navigation extends Vue {
+
 }
 </script>
 

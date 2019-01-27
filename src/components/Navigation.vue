@@ -1,6 +1,5 @@
 <template>
-  <v-app>
-    <v-navigation-drawer app v-bind:stateless="naviState" dark value="true">
+    <v-navigation-drawer app dark stateless value="true">
       <v-list>
         <v-list-tile>
           <v-list-tile-action>
@@ -25,7 +24,6 @@
           </v-list-group>
       </v-list>
     </v-navigation-drawer>
-  </v-app>
 </template>
 
 
@@ -51,8 +49,6 @@ export default class Navigation extends Vue {
       ],
     },
   ];
-
-  private naviState: boolean = true;
 }
 </script>
 

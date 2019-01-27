@@ -1,30 +1,32 @@
+<!-- https://vuetifyjs.com/ja/framework/default-markup -->
 <template>
   <v-app>
     <Navigation />
     <Toolbar />
     <v-content>
-      <v-container fluid>
-        <!-- <router-view></router-view> -->
-      </v-container>
+      <TechInfoView />
     </v-content>
-    <!-- <v-footer app></v-footer> -->
   </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import TechInfoView from './components/TechInfoView.vue';
 import Navigation from './components/Navigation.vue';
 import Toolbar from './components/Toolbar.vue';
 
 @Component({
   components: {
-    HelloWorld,
+    TechInfoView,
     Navigation,
     Toolbar,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+
+  private naviState: boolean = true;
+
+}
 </script>
 
 <style lang="scss">
