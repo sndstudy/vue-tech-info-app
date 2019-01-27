@@ -1,6 +1,6 @@
 <template>
     <v-toolbar app color="teal lighten-3">
-      <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
+      <v-toolbar-side-icon v-on:click='sideIcon'></v-toolbar-side-icon>
       <v-toolbar-title>Title</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
@@ -17,6 +17,15 @@ import { Component, Prop, Vue, Emit } from 'vue-property-decorator';
 
 @Component
 export default class Navigation extends Vue {
+
+  @Emit('sideIcon')
+  private emitSideIcon(): void {
+    return;
+  }
+
+  private sideIcon(): void {
+    this.emitSideIcon();
+  }
 
 }
 </script>

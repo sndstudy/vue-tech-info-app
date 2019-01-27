@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer app dark stateless value="true">
+    <v-navigation-drawer app dark stateless v-model="drawer">
       <v-list>
         <v-list-tile>
           <v-list-tile-action>
@@ -28,7 +28,7 @@
 
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 
 @Component
 export default class Navigation extends Vue {
@@ -49,6 +49,18 @@ export default class Navigation extends Vue {
       ],
     },
   ];
+
+  @Prop()
+  private naviState!: boolean;
+
+  private drawer: boolean = false;
+
+  @Watch('naviState')
+  private setDrawer(): void {
+    // 親コンポーネントから直接値を渡すとエラーになるため
+    this.drawer = !this.drawer;
+  }
+
 }
 </script>
 

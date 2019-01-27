@@ -1,8 +1,8 @@
 <!-- https://vuetifyjs.com/ja/framework/default-markup -->
 <template>
   <v-app>
-    <Navigation />
-    <Toolbar />
+    <Navigation v-bind:naviState="naviState"/>
+    <Toolbar v-on:sideIcon='naviState = !naviState'/>
     <v-content>
       <TechInfoView />
     </v-content>
