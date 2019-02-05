@@ -1,13 +1,13 @@
 <template>
     <v-toolbar app color="teal lighten-3">
       <v-toolbar-side-icon v-on:click='sideIcon'></v-toolbar-side-icon>
-      <v-toolbar-title>Title</v-toolbar-title>
-      <v-spacer></v-spacer>
+      <v-toolbar-title>TechInfo</v-toolbar-title>
+      <!-- <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn flat>Link One</v-btn>
         <v-btn flat>Link Two</v-btn>
         <v-btn flat>Link Three</v-btn>
-      </v-toolbar-items>
+      </v-toolbar-items> -->
     </v-toolbar>
 </template>
 

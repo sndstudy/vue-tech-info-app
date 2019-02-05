@@ -12,6 +12,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import TechInfoItem from './TechInfoItem.vue';
+import { Item } from '../interface/item';
 
 @Component({
   components: {
@@ -19,12 +20,20 @@ import TechInfoItem from './TechInfoItem.vue';
   },
 })
 export default class TechInfoView extends Vue {
-  private itemList: string[] = ['item1', 'item2', 'item3',
-                                'item2', 'item3', 'item2',
-                                'item3', 'item2', 'item3',
-                                'item2', 'item3', 'item2',
-                                'item3', 'item2', 'item3',
-                                'item2', 'item3', 'item2', 'item3'];
+  private itemList: Item[] = [
+    {
+      url: 'https://qiita.com/',
+      title: 'aiueo',
+      tags: ['js', 'Java'],
+      icon: '',
+    },
+    {
+      url: 'https://jp.vuejs.org/v2/guide/syntax.html',
+      title: 'aiueokakikukeo',
+      tags: ['js'],
+      icon: '',
+    },
+  ];
 }
 </script>
 
