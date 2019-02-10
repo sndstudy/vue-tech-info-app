@@ -1,7 +1,7 @@
 <template>
-  <v-card hover dark>
-    <v-card-title primary-title>
-      <span class="circle">a</span>
+  <v-card hover color="teal lighten-5" >
+    <v-card-title primary-title >
+      <span class="circle">{{item.icon}}</span>
       <a v-bind:href="item.url">{{item.title}}</a>
     </v-card-title>
     <div>{{item.tag}}</div>
@@ -34,7 +34,7 @@ a {
 	display: inline-block;
 	width: 30px;
 	height: 30px;
-	background: rgb(80, 231, 110);
+	background: rgb(47, 202, 78);
   margin-right: 10px;
   color: white;
   font-size: 20px;

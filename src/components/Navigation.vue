@@ -1,7 +1,7 @@
 <template>
     <v-navigation-drawer app dark stateless v-model="drawer">
       <v-list>
-        <v-list-tile>
+        <v-list-tile v-on:click=''>
           <v-list-tile-action>
             <v-icon>home</v-icon>
           </v-list-tile-action>
@@ -39,13 +39,8 @@ export default class Navigation extends Vue {
       tagNames: [
         {tagName: 'JavaScript'},
         {tagName: 'Java'},
-      ],
-    },
-    {
-      siteName: 'Qiita2',
-      tagNames: [
-        {tagName: 'JavaScript'},
-        {tagName: 'Java'},
+        {tagName: 'Python'},
+        {tagName: 'vue.js'},
       ],
     },
   ];
