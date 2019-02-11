@@ -18,6 +18,7 @@ import axios from 'axios';
 import { IAxiosResponse } from './dto/axios_response';
 import { IItemResponse } from './dto/item_response';
 import { Item } from './interface/item';
+import { httpGet } from './service/http-service';
 
 @Component({
   components: {
@@ -31,25 +32,49 @@ export default class App extends Vue {
   private naviState: boolean = true;
   private items: Item[] = [];
 
-  public async mounted(): Promise<void> {
+  public async created(): Promise<void> {
 
-    const params: any = { params:
+    const paramsJava: any = { params:
                           {
                               page: '1',
-                              perPage: '20',
-                              query: 'tag:JavaScript',
+                              perPage: '5',
+                              query: 'tag:Java',
                           },
                         };
 
+    const paramsJavaScript: any = { params:
+                      {
+                          page: '1',
+                          perPage: '5',
+                          query: 'tag:JavaScript',
+                      },
+                    };
+
+    const paramsPython: any = { params:
+                      {
+                          page: '1',
+                          perPage: '5',
+                          query: 'tag:Python',
+                      },
+                    };
+
+    const paramsVue: any = { params:
+                      {
+                          page: '1',
+                          perPage: '5',
+                          query: 'tag:vue.js',
+                      },
+                    };
+
     // Qiita APIから取得する処理
-    const response: IAxiosResponse =
-        await axios.get<IAxiosResponse>('http://localhost:3000/qiita', params).catch(
-                                        (err: IAxiosResponse): IAxiosResponse => {
-                                            return err;
-                                        });
+    const [a, b, c, d]: IAxiosResponse[] = await Promise.all([
+      httpGet('http://localhost:3000/qiita', paramsJava),
+      httpGet('http://localhost:3000/qiita', paramsJavaScript),
+      httpGet('http://localhost:3000/qiita', paramsPython),
+      httpGet('http://localhost:3000/qiita', paramsVue),
+    ]);
 
-    this.items = response.data;
-
+    this.items = [...a.data, ...b.data, ...c.data, ...d.data];
 
   }
 
