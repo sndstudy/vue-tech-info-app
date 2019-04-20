@@ -9,7 +9,13 @@
       <v-chip small label color="primary" text-color="white" v-for="tag in item.tags" :key="tag.index">{{tag}}</v-chip>
     </div>
     <div class="twitter">
-      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+      <a v-bind:href="item.tweetUrl"
+         class="twitter-share-button"
+         data-show-count="false"
+         rel="noopener"
+         target="_blank">
+        <img class="twitter-logo" src="@/assets/Twitter_Social_Icon_Circle_Color.svg" alt="Tweet">
+      </a>
     </div>
   </v-card>
 </template>
@@ -56,5 +62,10 @@ a.item-url {
   margin-right: 10px;
   color: white;
   font-size: 20px;
+}
+
+.twitter-logo{
+  height: 32px;
+  width: 32px;
 }
 </style>

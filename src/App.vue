@@ -69,12 +69,13 @@ export default class App extends Vue {
     // Qiita APIから取得する処理
     const [a, b, c, d]: IAxiosResponse[] = await Promise.all([
       httpGet('http://localhost:3000/qiita', paramsJava),
-      httpGet('http://localhost:3000/qiita', paramsJavaScript),
-      httpGet('http://localhost:3000/qiita', paramsPython),
-      httpGet('http://localhost:3000/qiita', paramsVue),
+      // httpGet('http://localhost:3000/qiita', paramsJavaScript),
+      // httpGet('http://localhost:3000/qiita', paramsPython),
+      // httpGet('http://localhost:3000/qiita', paramsVue),
     ]);
 
-    this.items = [...a.data, ...b.data, ...c.data, ...d.data];
+    // this.items = [...a.data, ...b.data, ...c.data, ...d.data];
+    this.items = [...a.data];
 
   }
 
