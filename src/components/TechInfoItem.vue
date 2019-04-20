@@ -2,11 +2,14 @@
   <v-card hover color="teal lighten-5" >
     <v-card-title primary-title >
       <span class="circle">{{item.icon}}</span>
-      <a v-bind:href="item.url">{{item.title}}</a>
+      <a class="item-url" v-bind:href="item.url">{{item.title}}</a>
     </v-card-title>
     <div>{{item.tag}}</div>
     <div>
       <v-chip small label color="primary" text-color="white" v-for="tag in item.tags" :key="tag.index">{{tag}}</v-chip>
+    </div>
+    <div class="twitter">
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
     </div>
   </v-card>
 </template>
@@ -25,7 +28,7 @@ export default class TechInfoItem extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 
-a {
+a.item-url {
   color: #42b983;
   font-size: 20px;
 }
