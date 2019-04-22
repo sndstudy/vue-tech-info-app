@@ -1,8 +1,10 @@
 <template>
   <v-card hover color="teal lighten-5" >
     <v-card-title primary-title >
-      <span class="circle">{{item.icon}}</span>
-      <a class="item-url" v-bind:href="item.url">{{item.title}}</a>
+      <a class="item-url" rel="noopener" target="_blank" v-bind:href="item.url">
+        <span class="circle">{{item.icon}}</span>
+        {{item.title}}
+      </a>
     </v-card-title>
     <div>{{item.tag}}</div>
     <div>

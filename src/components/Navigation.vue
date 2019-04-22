@@ -13,7 +13,7 @@
                 <v-list-tile-title>{{item.siteName}}</v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
-            <v-list-tile v-on:click='' v-for="(tag, index) in item.tagNames" :key="index">
+            <v-list-tile v-on:click='tagClick(tag.tagName);' v-for="(tag, index) in item.tagNames" :key="index">
               <v-list-tile-action>
                 <v-icon></v-icon>
               </v-list-tile-action>
@@ -54,6 +54,10 @@ export default class Navigation extends Vue {
   private setDrawer(): void {
     // 親コンポーネントから直接値を渡すとエラーになるため
     this.drawer = !this.drawer;
+  }
+
+  private tagClick(value: string): void {
+    this.$emit('requestTag', value);
   }
 
 }
