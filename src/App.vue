@@ -36,7 +36,7 @@ export default class App extends Vue {
                           {
                               page: '1',
                               perPage: '5',
-                              query: 'tag:Java',
+                              query: 'Java',
                           },
                         };
 
@@ -44,7 +44,7 @@ export default class App extends Vue {
                       {
                           page: '1',
                           perPage: '5',
-                          query: 'tag:JavaScript',
+                          query: 'JavaScript',
                       },
                     };
 
@@ -52,7 +52,7 @@ export default class App extends Vue {
                       {
                           page: '1',
                           perPage: '5',
-                          query: 'tag:Python',
+                          query: 'Python',
                       },
                     };
 
@@ -60,7 +60,7 @@ export default class App extends Vue {
                       {
                           page: '1',
                           perPage: '5',
-                          query: 'tag:vue.js',
+                          query: 'vue.js',
                       },
                     };
 
@@ -70,13 +70,13 @@ export default class App extends Vue {
     // Qiita APIから取得する処理
     const [a, b, c, d]: IAxiosResponse[] = await Promise.all([
       httpGet('http://localhost:3000/qiita', this.paramsJava),
-      // httpGet('http://localhost:3000/qiita', paramsJavaScript),
-      // httpGet('http://localhost:3000/qiita', paramsPython),
-      // httpGet('http://localhost:3000/qiita', paramsVue),
+      httpGet('http://localhost:3000/qiita', this.paramsJavaScript),
+      httpGet('http://localhost:3000/qiita', this.paramsPython),
+      httpGet('http://localhost:3000/qiita', this.paramsVue),
     ]);
 
-    // this.items = [...a.data, ...b.data, ...c.data, ...d.data];
-    this.items = [...a.data];
+    this.items = [...a.data, ...b.data, ...c.data, ...d.data];
+    // this.items = [...a.data];
 
   }
 
