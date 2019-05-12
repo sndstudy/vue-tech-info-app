@@ -19,6 +19,7 @@ import { IAxiosResponse } from './dto/axios_response';
 import { IItemResponse } from './dto/item_response';
 import { Item } from './interface/item';
 import { httpGet } from './service/http-service';
+import { paramsJava, paramsJavaScript, paramsPython, paramsVue, QueryParams } from './params/query_params';
 
 @Component({
   components: {
@@ -32,66 +33,28 @@ export default class App extends Vue {
   private naviState: boolean = true;
   private items: Item[] = [];
 
-  private paramsJava: any = { params:
-                          {
-                              page: '1',
-                              perPage: '5',
-                              query: 'Java',
-                          },
-                        };
-
-  private readonly paramsJavaScript: any = { params:
-                      {
-                          page: '1',
-                          perPage: '5',
-                          query: 'JavaScript',
-                      },
-                    };
-
-  private readonly paramsPython: any = { params:
-                      {
-                          page: '1',
-                          perPage: '5',
-                          query: 'Python',
-                      },
-                    };
-
-  private readonly paramsVue: any = { params:
-                      {
-                          page: '1',
-                          perPage: '5',
-                          query: 'vue.js',
-                      },
-                    };
-
-
   public async created(): Promise<void> {
 
     // Qiita APIから取得する処理
-    const [a, b, c, d]: IAxiosResponse[] = await Promise.all([
-      httpGet('http://localhost:3000/qiita', this.paramsJava),
-      httpGet('http://localhost:3000/qiita', this.paramsJavaScript),
-      httpGet('http://localhost:3000/qiita', this.paramsPython),
-      httpGet('http://localhost:3000/qiita', this.paramsVue),
-    ]);
+    const response: IAxiosResponse = await httpGet('http://localhost:3000/qiita', paramsJavaScript);
 
-    this.items = [...a.data, ...b.data, ...c.data, ...d.data];
-    // this.items = [...a.data];
+    this.items = [...response.data];
 
   }
 
-  private async requestTag(value: string): Promise<void> {
+  private async requestTag(value: {siteName: string, tagName: string}): Promise<void> {
 
-    const paramsAll: any = {
-      'JavaScript' : this.paramsJavaScript,
-      'Java' : this.paramsJava,
-      'Python' : this.paramsPython,
-      'vue.js' : this.paramsVue,
+    const paramsAll: {[key: string]: QueryParams} = {
+      'JavaScript' : paramsJavaScript,
+      'Java' : paramsJava,
+      'Python' : paramsPython,
+      'vue.js' : paramsVue,
     };
 
     // Qiita APIから取得する処理
-    const a: IAxiosResponse = await httpGet('http://localhost:3000/qiita', paramsAll[value]);
-    this.items = [...a.data];
+    const response: IAxiosResponse = await httpGet(`http://localhost:3000/${value.siteName.toLowerCase()}`,
+                                                    paramsAll[value.tagName]);
+    this.items = [...response.data];
 
   }
 

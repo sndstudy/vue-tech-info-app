@@ -1,19 +1,19 @@
 <template>
     <v-navigation-drawer app dark stateless v-model="drawer">
       <v-list>
-        <v-list-tile v-on:click=''>
+        <!-- <v-list-tile v-on:click=''>
           <v-list-tile-action>
             <v-icon>home</v-icon>
           </v-list-tile-action>
           <v-list-tile-title>Home</v-list-tile-title>
-        </v-list-tile>
+        </v-list-tile> -->
         <v-list-group prepend-icon="account_circle" v-for="(item, index) in naviItems" :key="index">
             <v-list-tile slot="activator">
               <v-list-tile-content>
                 <v-list-tile-title>{{item.siteName}}</v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
-            <v-list-tile v-on:click='tagClick(tag.tagName);' v-for="(tag, index) in item.tagNames" :key="index">
+            <v-list-tile v-on:click='tagClick({siteName:item.siteName, tagName: tag.tagName});' v-for="(tag, index) in item.tagNames" :key="index">
               <v-list-tile-action>
                 <v-icon></v-icon>
               </v-list-tile-action>
@@ -43,6 +43,14 @@ export default class Navigation extends Vue {
         {tagName: 'vue.js'},
       ],
     },
+    {
+      siteName: 'HackerNews',
+      tagNames: [
+        {tagName: 'JavaScript'},
+        {tagName: 'Java'},
+        {tagName: 'Python'},
+      ],
+    },
   ];
 
   @Prop()
@@ -56,7 +64,7 @@ export default class Navigation extends Vue {
     this.drawer = !this.drawer;
   }
 
-  private tagClick(value: string): void {
+  private tagClick(value: {siteName: string, tagName: string}): void {
     this.$emit('requestTag', value);
   }
 
