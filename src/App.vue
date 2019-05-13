@@ -33,12 +33,14 @@ export default class App extends Vue {
   private naviState: boolean = true;
   private items: Item[] = [];
 
+  private url: string = 'https://tech-info-server.herokuapp.com/';
+
   public async created(): Promise<void> {
 
     try {
 
       // Qiita APIから取得する処理
-      const response: IAxiosResponse = await httpGet('http://localhost:3000/qiita', paramsJavaScript).catch(() => {
+      const response: IAxiosResponse = await httpGet(`${this.url}qiita`, paramsJavaScript).catch(() => {
                                                           throw new Error('クライアントError');
                                                         });;
 
@@ -60,7 +62,7 @@ export default class App extends Vue {
     };
 
     try {
-      const response: IAxiosResponse | any = await httpGet(`http://localhost:3000/${value.siteName.toLowerCase()}`,
+      const response: IAxiosResponse | any = await httpGet(`${this.url}${value.siteName.toLowerCase()}`,
                                                       paramsAll[value.tagName]).catch(() => {
                                                         throw new Error('クライアントError');
                                                       });
