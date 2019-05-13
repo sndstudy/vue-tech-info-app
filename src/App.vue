@@ -35,10 +35,18 @@ export default class App extends Vue {
 
   public async created(): Promise<void> {
 
-    // Qiita APIから取得する処理
-    const response: IAxiosResponse = await httpGet('http://localhost:3000/qiita', paramsJavaScript);
+    try {
 
-    this.items = [...response.data];
+      // Qiita APIから取得する処理
+      const response: IAxiosResponse = await httpGet('http://localhost:3000/qiita', paramsJavaScript).catch(() => {
+                                                          throw new Error('クライアントError');
+                                                        });;
+
+      this.items = [...response.data];
+
+    } catch (err) {
+
+    }
 
   }
 
@@ -51,10 +59,15 @@ export default class App extends Vue {
       'vue.js' : paramsVue,
     };
 
-    // Qiita APIから取得する処理
-    const response: IAxiosResponse = await httpGet(`http://localhost:3000/${value.siteName.toLowerCase()}`,
-                                                    paramsAll[value.tagName]);
-    this.items = [...response.data];
+    try {
+      const response: IAxiosResponse | any = await httpGet(`http://localhost:3000/${value.siteName.toLowerCase()}`,
+                                                      paramsAll[value.tagName]).catch(() => {
+                                                        throw new Error('クライアントError');
+                                                      });
+      this.items = [...response.data];
+    } catch (err) {
+      console.log(err);
+    }
 
   }
 
